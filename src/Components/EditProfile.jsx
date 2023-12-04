@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-
 export const EditProfile = ({ userId }) => {
   const [userData, setUserData] = useState({
     firstName: '',
@@ -14,16 +13,15 @@ export const EditProfile = ({ userId }) => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const token = sessionStorage.getItem('token'); 
+        const token = sessionStorage.getItem('token');
         if (!token) {
           console.error('Token not found in sessionStorage');
-          
           return;
         }
 
         const response = await fetch(`http://localhost:5000/login/${userId}`, {
           headers: {
-            'Authorization': `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
         });
 
@@ -58,7 +56,7 @@ export const EditProfile = ({ userId }) => {
     e.preventDefault();
 
     const newErrors = {};
-   
+
     if (userData.firstName.trim() === '') {
       newErrors.firstName = 'First Name is required';
     }
@@ -69,19 +67,17 @@ export const EditProfile = ({ userId }) => {
     }
 
     try {
-      const token = sessionStorage.getItem('token'); 
+      const token = sessionStorage.getItem('token');
       if (!token) {
         console.error('Token not found in sessionStorage');
-       
         return;
       }
 
-   
       const response = await fetch('http://localhost:5000/editProfile', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`, 
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           firstName: userData.firstName,
@@ -96,6 +92,9 @@ export const EditProfile = ({ userId }) => {
       } else {
         const errorMessage = await response.text();
         console.error('Failed to update user details:', errorMessage);
+
+        // You may want to handle different error scenarios more specifically here
+
         alert('Failed to update user details. Please try again.');
       }
     } catch (error) {
