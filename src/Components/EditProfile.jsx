@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const EditProfile = ({ userId }) => {
   const [userData, setUserData] = useState({
@@ -9,6 +10,12 @@ export const EditProfile = ({ userId }) => {
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate('/');
+  };
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -112,6 +119,7 @@ export const EditProfile = ({ userId }) => {
       {submitted ? (
         <div>
           <h2>Profile Updated Successfully!</h2>
+          <button onClick={handleBack}>Home</button>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
@@ -123,7 +131,7 @@ export const EditProfile = ({ userId }) => {
               value={userData.firstName}
               onChange={handleInputChange}
             />
-            {errors.firstName && <span>{errors.firstName}</span>}
+   
           </label>
 
           <label>
@@ -134,7 +142,7 @@ export const EditProfile = ({ userId }) => {
               value={userData.lastName}
               onChange={handleInputChange}
             />
-            {errors.lastName && <span>{errors.lastName}</span>}
+           
           </label>
 
           <label>
@@ -145,7 +153,7 @@ export const EditProfile = ({ userId }) => {
               value={userData.phone}
               onChange={handleInputChange}
             />
-            {errors.phone && <span>{errors.phone}</span>}
+           
           </label>
 
           <button type="submit">Update Profile</button>
