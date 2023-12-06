@@ -19,7 +19,7 @@ export const EditProfile = ({ userId }) => {
           return;
         }
 
-        const response = await fetch(`http://localhost:5000/login/${userId}`, {
+        const response = await fetch(`https://scholarnest-api.onrender.com/login/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -73,7 +73,7 @@ export const EditProfile = ({ userId }) => {
         return;
       }
 
-      const response = await fetch('http://localhost:5000/editProfile', {
+      const response = await fetch('https://scholarnest-api.onrender.com/editProfile', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

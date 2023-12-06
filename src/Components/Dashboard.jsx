@@ -14,7 +14,7 @@ export const Dashboard = ({ token }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.post('http://localhost:5000/login', {}, {
+        const response = await axios.post('https://scholarnest-api.onrender.com/login', {}, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -46,7 +46,7 @@ export const Dashboard = ({ token }) => {
   const handleSave = async () => {
     try {
       const response = await axios.put(
-        'http://localhost:5000/editProfile',
+        'https://scholarnest-api.onrender.com/editProfile',
         formData,
         {
           headers: {
