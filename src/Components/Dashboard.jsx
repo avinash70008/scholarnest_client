@@ -20,10 +20,10 @@ export const Dashboard = ({ token }) => {
           },
         });
 
-        console.log('API Response:', response.data); // Log the entire response to check the structure
+        console.log('API Response:', response.data); 
 
         setUser(response.data.user);
-        console.log('User Data:', user); // Log the user data
+        console.log('User Data:', user); 
 
         setFormData({
           firstName: response.data.user.firstName,
@@ -32,12 +32,12 @@ export const Dashboard = ({ token }) => {
         });
       } catch (error) {
         console.error('Error fetching user:', error);
-        console.log('Response:', error.response); // Log the response for further details
+        console.log('Response:', error.response); 
       }
     };
 
     fetchUser();
-  }, [token, user]); // Add 'user' to the dependencies to track changes in the user state
+  }, [token, user]); 
 
   const handleEdit = () => {
     setEditing(true);

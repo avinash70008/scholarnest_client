@@ -100,7 +100,6 @@ export const EditProfile = ({ userId }) => {
         const errorMessage = await response.text();
         console.error('Failed to update user details:', errorMessage);
 
-        // You may want to handle different error scenarios more specifically here
 
         alert('Failed to update user details. Please try again.');
       }

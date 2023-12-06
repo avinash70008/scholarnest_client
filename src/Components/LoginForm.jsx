@@ -26,6 +26,11 @@ export const LoginForm = () => {
 
         console.log('Login successful');
 
+ 
+        sessionStorage.setItem('token', data.token);
+
+        alert('Login successful');
+
         setUserDetails({
           firstName: data.user.firstName,
           lastName: data.user.lastName,
@@ -35,7 +40,6 @@ export const LoginForm = () => {
 
         setLoginError(null);
       } else {
-    
         setLoginError('Invalid email or password. Please try again.');
         setUserDetails(null);
       }
